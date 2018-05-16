@@ -1,0 +1,24 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: cpu-demo-deployment
+spec:
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: cpu-demo
+    spec:
+      containers:
+      - name: cpu-demo-ctr
+        image: vish/stress
+        resources:
+          limits:
+            cpu: "1"
+          requests:
+            cpu: "0.5"
+        args:
+        - -cpus
+        - "2"
+      nodeSelector:
+        cloud.google.com/gke-nodepool: default-pool

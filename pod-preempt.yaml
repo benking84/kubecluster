@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-iconic-preempt
+  labels:
+    app: hello-iconic-preempt
+spec:
+  containers:
+  - image: gcr.io/google-samples/hello-app:1.0
+    name: hello-app-container
+    ports:
+    - containerPort: 8080
+  nodeSelector:
+    cloud.google.com/gke-preemptible: "true"

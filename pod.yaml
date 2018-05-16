@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: iconic-app
+  labels:
+    app: iconic-app
+spec:
+  containers:
+  - image: gcr.io/google-samples/hello-app:1.0
+    name: hello-iconic-container
+    ports:
+    - containerPort: 8080
+  nodeSelector:
+    cloud.google.com/gke-nodepool: custom
